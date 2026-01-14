@@ -11,52 +11,7 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="logo">
-            <i class="fas fa-code"></i>
-            <h1>CodingHub</h1>
-        </div>
-        
-        <ul class="menu" id="main-menu">
-            <li data-page="dashboard">
-                <i class="fas fa-tachometer-alt"></i>
-                <span>Tableau de bord</span>
-            </li>
-            <li data-page="challenges">
-                <i class="fas fa-tasks"></i>
-                <span>Challenges</span>
-            </li>
-            <li class="active" data-page="users">
-                <i class="fas fa-users"></i>
-                <span>Participants</span>
-            </li>
-            <li data-page="submissions">
-                <i class="fas fa-paper-plane"></i>
-                <span>Soumissions</span>
-            </li>
-            <li data-page="categories">
-                <i class="fas fa-folder"></i>
-                <span>Catégories</span>
-            </li>
-            <li data-page="rankings">
-                <i class="fas fa-trophy"></i>
-                <span>Classement</span>
-            </li>
-            <li data-page="settings">
-                <i class="fas fa-cog"></i>
-                <span>Paramètres</span>
-            </li>
-        </ul>
-        
-        <div class="user-profile">
-            <div class="user-avatar">JD</div>
-            <div class="user-info">
-                <h3>Jane Doe</h3>
-                <p>Admin</p>
-            </div>
-        </div>
-    </div>
-    
+   <script src="js/sidebar.js"></script>
     <!-- Main Content -->
     <div class="main-content">
         <!-- Navbar -->
@@ -73,9 +28,7 @@
                     <button class="btn btn-secondary" onclick="window.history.back()">
                         <i class="fas fa-arrow-left"></i> Retour
                     </button>
-                    <button class="logout-btn" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i> Déconnexion
-                    </button>
+                  
                 </div>
             </div>
         </nav>

@@ -157,11 +157,7 @@ class MainApp {
                 </div>
                 <div class="navbar-right">
                     <div class="navbar-controls">
-                        <select id="language-select" class="language-select">
-                            <option value="fr">🇫🇷 Français</option>
-                            <option value="en">🇬🇧 English</option>
-                            <option value="ar">🇸🇦 العربية</option>
-                        </select>
+                    
                       
                        
                     </div>

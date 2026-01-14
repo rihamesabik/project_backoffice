@@ -638,9 +638,7 @@ function displayUserDetails(user) {
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <button class="btn-action btn-view" onclick="viewSubmission(${user.id}, ${index})" title="Voir détails">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
+                                                  
                                                     <button class="btn-action btn-edit" onclick="reevaluateSubmission(${user.id}, ${index})" title="Réévaluer">
                                                         <i class="fas fa-redo"></i>
                                                     </button>
@@ -693,16 +691,7 @@ function displayUserDetails(user) {
                             </div>
                         `}
                         
-                        <div class="edit-section" style="margin-top: 30px;">
-                            <h4>Gestion des réussites</h4>
-                            <div class="edit-actions">
-                                <button class="btn btn-sm btn-primary" onclick="addAchievement(${user.id})">
-                                    <i class="fas fa-plus"></i> Ajouter une réussite
-                                </button>
-                                <button class="btn btn-sm btn-outline" onclick="viewAllAchievements(${user.id})">
-                                    <i class="fas fa-list"></i> Voir toutes les réussites
-                                </button>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>

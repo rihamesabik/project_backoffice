@@ -1,55 +1,15 @@
-// sidebar.js - Logique réutilisable pour la sidebar
-// Dans sidebar.js
-function loadUserProfile() {
-    // Essayer d'abord le profil settings
-    const profile = localStorage.getItem('codinghub_profile');
-    let username, fullname, role, avatar;
-    
-    if (profile) {
-        try {
-            const profileData = JSON.parse(profile);
-            fullname = profileData.fullName || 'Admin';
-            role = profileData.role || 'Administrateur';
-            avatar = profileData.avatar || 'AD';
-            username = profileData.email ? profileData.email.split('@')[0] : 'admin';
-        } catch (e) {
-            console.error('Erreur parsing profile:', e);
-        }
-    }
-    
-    // Fallback aux anciennes clés
-    username = username || localStorage.getItem('codinghub_username') || 'admin';
-    fullname = fullname || localStorage.getItem('codinghub_fullname') || 'Administrateur';
-    role = role || localStorage.getItem('codinghub_role') || 'Administrateur';
-    avatar = avatar || 'AD';
-    
-    // Mettre à jour l'avatar avec les initiales
-    const avatarEl = document.querySelector('.user-avatar');
-    if (avatarEl) {
-        avatarEl.textContent = avatar;
-    }
-    
-    // Mettre à jour les informations
-    const usernameEl = document.querySelector('.user-info h3');
-    const roleEl = document.querySelector('.user-info p');
-    
-    if (usernameEl) usernameEl.textContent = fullname;
-    if (roleEl) roleEl.textContent = role;
-}
+// sidebar.js - Version corrigée
+
 // Fonction pour charger la sidebar dans une page
 function loadSidebar() {
     // Vérifier si la sidebar n'est pas déjà chargée
     if (!document.getElementById('sidebar')) {
-        // Créer une requête pour charger sidebar.html
         fetch('sidebar.html')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Impossible de charger la sidebar');
-                }
+                if (!response.ok) throw new Error('Impossible de charger la sidebar');
                 return response.text();
             })
             .then(html => {
-                // Insérer la sidebar au début du body
                 document.body.insertAdjacentHTML('afterbegin', html);
                 
                 // Charger le CSS de la sidebar
@@ -62,12 +22,10 @@ function loadSidebar() {
                 initSidebar();
             })
             .catch(error => {
-                console.error('Erreur lors du chargement de la sidebar:', error);
-                // Fallback: créer la sidebar manuellement
+                console.error('Erreur:', error);
                 createFallbackSidebar();
             });
     } else {
-        // Si la sidebar est déjà présente, juste l'initialiser
         initSidebar();
     }
 }
@@ -106,14 +64,11 @@ function createFallbackSidebar() {
                     <i class="fas fa-trophy"></i>
                     <span>Classement</span>
                 </li>
-                <li data-page="settings">
-                    <i class="fas fa-cog"></i>
-                    <span>Paramètres</span>
-                </li>
+              
             </ul>
             
             <div class="user-profile">
-                <div class="user-avatar" id="sidebar-avatar">Ad</div>
+                <div class="user-avatar" id="sidebar-avatar">AD</div>
                 <div class="user-info">
                     <h3 id="sidebar-username">Admin</h3>
                     <p id="sidebar-role">Administrateur</p>
@@ -131,25 +86,102 @@ function createFallbackSidebar() {
 
 // Initialiser la sidebar
 function initSidebar() {
+    console.log("🚀 Initialisation sidebar");
+    loadUserProfile();
     updateActiveMenuItem();
     setupSidebarEvents();
-    loadUserProfile();
+    
+    // Écouter les mises à jour de profil
+    setupProfileListeners();
+}
+
+// Charger le profil utilisateur - CORRIGÉ
+function loadUserProfile() {
+    console.log("📥 Chargement du profil");
+    
+    // 1. Essayer de charger depuis codinghub_profile (Settings)
+    const profile = localStorage.getItem('codinghub_profile');
+    let fullname = 'Admin';
+    let role = 'Administrateur';
+    let avatar = 'AD';
+    
+    if (profile) {
+        try {
+            const profileData = JSON.parse(profile);
+            fullname = profileData.fullName || 'Admin';
+            role = profileData.role || 'Administrateur';
+            avatar = profileData.avatar || 'AD';
+            console.log("✅ Profil chargé depuis codinghub_profile:", {fullname, role, avatar});
+        } catch (e) {
+            console.error('❌ Erreur parsing profile:', e);
+        }
+    }
+    
+    // 2. Fallback aux anciennes clés
+    if (!fullname) fullname = localStorage.getItem('codinghub_fullname') || 'Admin';
+    if (!role) role = localStorage.getItem('codinghub_role') || 'Administrateur';
+    
+    // 3. Mettre à jour l'avatar
+    const avatarEl = document.getElementById('sidebar-avatar');
+    if (avatarEl) {
+        avatarEl.textContent = avatar;
+        console.log("✅ Avatar mis à jour:", avatar);
+    } else {
+        console.log("❌ Élément sidebar-avatar non trouvé");
+    }
+    
+    // 4. Mettre à jour le nom
+    const usernameEl = document.getElementById('sidebar-username');
+    if (usernameEl) {
+        usernameEl.textContent = fullname;
+        console.log("✅ Nom mis à jour:", fullname);
+    } else {
+        console.log("❌ Élément sidebar-username non trouvé");
+    }
+    
+    // 5. Mettre à jour le rôle
+    const roleEl = document.getElementById('sidebar-role');
+    if (roleEl) {
+        roleEl.textContent = role;
+        console.log("✅ Rôle mis à jour:", role);
+    } else {
+        console.log("❌ Élément sidebar-role non trouvé");
+    }
+}
+
+// Écouter les mises à jour de profil
+function setupProfileListeners() {
+    // Écouter les changements de localStorage
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'codinghub_profile') {
+            console.log("📦 Changement détecté dans codinghub_profile");
+            loadUserProfile();
+        }
+    });
+    
+    // Écouter les événements personnalisés
+    window.addEventListener('profileUpdated', function(e) {
+        if (e.detail) {
+            console.log("📡 Événement profileUpdated reçu");
+            // Mettre à jour localStorage puis recharger
+            localStorage.setItem('codinghub_profile', JSON.stringify(e.detail));
+            loadUserProfile();
+        }
+    });
 }
 
 // Mettre à jour l'élément de menu actif
 function updateActiveMenuItem() {
-    // Obtenir le nom de la page actuelle
     const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'dashboard';
     
-    // Retirer la classe active de tous les éléments
     document.querySelectorAll('.menu li').forEach(li => {
         li.classList.remove('active');
     });
     
-    // Ajouter la classe active à l'élément correspondant
     const activeItem = document.querySelector(`.menu li[data-page="${currentPage}"]`);
     if (activeItem) {
         activeItem.classList.add('active');
+        console.log("✅ Menu actif:", currentPage);
     }
 }
 
@@ -165,108 +197,62 @@ function setupSidebarEvents() {
         });
     });
     
-    // Déconnexion depuis la sidebar
+    // Déconnexion
     const logoutBtn = document.getElementById('logout-sidebar-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', handleLogout);
     }
-    
-    // Navigation au clavier
-    document.addEventListener('keydown', (e) => {
-        if (e.altKey) {
-            switch(e.key) {
-                case '1':
-                    navigateToPage('dashboard');
-                    break;
-                case '2':
-                    navigateToPage('challenges');
-                    break;
-                case '3':
-                    navigateToPage('users');
-                    break;
-                case '4':
-                    navigateToPage('submissions');
-                    break;
-                case '5':
-                    navigateToPage('categories');
-                    break;
-                case '6':
-                    navigateToPage('rankings');
-                    break;
-                case '7':
-                    navigateToPage('settings');
-                    break;
-            }
-        }
-    });
 }
 
-// Navigation vers une page
+// Navigation
 function navigateToPage(page) {
-    // Si on est déjà sur la page, ne rien faire
     const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
     if (currentPage === page) return;
     
-    // Rediriger vers la page
     window.location.href = `${page}.html`;
 }
 
-// Gérer la déconnexion
+// Déconnexion
 function handleLogout(e) {
     e.preventDefault();
     
-    // Confirmation de déconnexion
     if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
-        // Supprimer les données de session
         localStorage.removeItem('codinghub_logged_in');
         localStorage.removeItem('codinghub_username');
         localStorage.removeItem('codinghub_fullname');
         localStorage.removeItem('codinghub_role');
+        localStorage.removeItem('codinghub_profile'); // Supprimer aussi le profil
         
-        // Rediriger vers la page de login
         window.location.href = 'index.html';
     }
 }
 
-// Charger le profil utilisateur
-function loadUserProfile() {
-    const username = localStorage.getItem('codinghub_username') || 'Admin';
-    const fullname = localStorage.getItem('codinghub_fullname') || 'Administrateur';
-    const role = localStorage.getItem('codinghub_role') || 'Administrateur';
+// Synchroniser le profil (appelée depuis Settings)
+function syncUserProfile(profileData) {
+    console.log("🔄 Synchronisation du profil depuis sidebar.js");
     
-    // Mettre à jour l'avatar avec les initiales
-    const avatar = document.getElementById('sidebar-avatar');
-    if (avatar) {
-        const initials = getInitials(fullname);
-        avatar.textContent = initials;
-    }
+    // Sauvegarder dans codinghub_profile
+    localStorage.setItem('codinghub_profile', JSON.stringify(profileData));
     
-    // Mettre à jour les informations
-    const usernameEl = document.getElementById('sidebar-username');
-    const roleEl = document.getElementById('sidebar-role');
+    // Mettre à jour la sidebar
+    loadUserProfile();
     
-    if (usernameEl) usernameEl.textContent = username;
-    if (roleEl) roleEl.textContent = role;
+    // Déclencher un événement pour les autres pages
+    window.dispatchEvent(new CustomEvent('profileUpdated', {
+        detail: profileData
+    }));
 }
 
-// Obtenir les initiales d'un nom
-function getInitials(name) {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-}
-
-// Fonction pour changer le statut de la sidebar (mobile)
+// Toggle sidebar mobile
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
         sidebar.classList.toggle('collapsed');
-        
-        // Sauvegarder l'état dans localStorage
-        const isCollapsed = sidebar.classList.contains('collapsed');
-        localStorage.setItem('sidebar_collapsed', isCollapsed);
+        localStorage.setItem('sidebar_collapsed', sidebar.classList.contains('collapsed'));
     }
 }
 
-// Fonction pour restaurer l'état de la sidebar
+// Restaurer l'état de la sidebar
 function restoreSidebarState() {
     const sidebar = document.getElementById('sidebar');
     const isCollapsed = localStorage.getItem('sidebar_collapsed') === 'true';
@@ -276,29 +262,20 @@ function restoreSidebarState() {
     }
 }
 
-// Fonction pour synchroniser le profil entre les pages
-function syncUserProfile(profileData) {
-    localStorage.setItem('codinghub_username', profileData.username || 'Admin');
-    localStorage.setItem('codinghub_fullname', profileData.fullName || 'Administrateur');
-    localStorage.setItem('codinghub_role', profileData.role || 'Administrateur');
-    
-    // Mettre à jour la sidebar
-    loadUserProfile();
-}
-
 // Initialiser quand le DOM est chargé
 document.addEventListener('DOMContentLoaded', function() {
-    // Charger la sidebar sur toutes les pages sauf index.html
     const currentPage = window.location.pathname.split('/').pop();
+    
+    // Ne pas charger sur login
     if (currentPage !== 'index.html' && currentPage !== '') {
+        console.log("🌐 Chargement sidebar pour:", currentPage);
         loadSidebar();
     }
     
-    // Restaurer l'état de la sidebar
     restoreSidebarState();
 });
 
-// Exporter les fonctions pour une utilisation globale
+// Exporter les fonctions
 window.SidebarManager = {
     loadSidebar,
     toggleSidebar,

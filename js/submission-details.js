@@ -815,9 +815,9 @@ function displaySubmissionDetails() {
                 
                 <div class="review-comment">
                     <div class="review-author">
-                        <div class="review-avatar">JD</div>
+                        <div class="review-avatar">AD</div>
                         <div class="review-meta">
-                            <div class="review-name">Jane Doe</div>
+                            <div class="review-name">Admin</div>
                             <div class="review-date">Admin - ${formattedDate}</div>
                         </div>
                     </div>
