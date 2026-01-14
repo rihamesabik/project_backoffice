@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingHub - Classement</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+<script src="js/sidebar.js"></script>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+
+                <h2 class="page-title">
+                    <i class="fas fa-trophy"></i> Classement
+                </h2>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="navbar-controls">
+                   
+                   
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Header avec filtres -->
+            <div class="content-header">
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="exportRankingsToCSV()">
+                        <i class="fas fa-file-export"></i> Export CSV
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshRankings()">
+                        <i class="fas fa-sync-alt"></i> Actualiser
+                    </button>
+                </div>
+                
+                <!-- Filtres -->
+                <div class="search-section">
+                    <div class="filter-box">
+                        <select id="periodFilter" class="form-control" onchange="updateRankings()">
+                            <option value="all">Classement global</option>
+                            <option value="month">Ce mois</option>
+                            <option value="week">Cette semaine</option>
+                            <option value="today">Aujourd'hui</option>
+                        </select>
+                        
+                        <select id="categoryFilter" class="form-control" onchange="updateRankings()">
+                            <option value="all">Toutes catégories</option>
+                            <option value="algorithmes">Algorithmes</option>
+                            <option value="structures">Structures de données</option>
+                            <option value="mathematiques">Mathématiques</option>
+                            <option value="ia">Intelligence Artificielle</option>
+                        </select>
+                        
+                        <select id="levelFilter" class="form-control" onchange="updateRankings()">
+                            <option value="all">Tous niveaux</option>
+                            <option value="debutant">Débutant</option>
+                            <option value="intermediaire">Intermédiaire</option>
+                            <option value="avance">Avancé</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                        
+                        <button class="btn btn-outline" onclick="resetFilters()">
+                            <i class="fas fa-times"></i> Réinitialiser
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistiques principales -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="topParticipant">-</h3>
+                        <p>Top participant</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgPoints">0</h3>
+                        <p>Points moyens</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="activeParticipants">0</h3>
+                        <p>Participants actifs</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalPoints">0</h3>
+                        <p>Points totaux</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section Top 3 -->
+            <div class="podium-section">
+                <h3 class="section-title">
+                    <i class="fas fa-medal"></i> Top 3
+                </h3>
+                <div class="podium" id="podium">
+                    <!-- Généré par JS -->
+                </div>
+            </div>
+            
+            <!-- Grille principale -->
+            <div class="rankings-grid">
+                <!-- Classement global -->
+                <div class="card large">
+                    <div class="card-header">
+                        <h3>
+                            <i class="fas fa-list-ol"></i> Classement Global
+                            <span class="badge badge-primary" id="rankingCount">0 participants</span>
+                        </h3>
+                        <div class="card-actions">
+                            <button class="btn btn-sm" onclick="toggleView()">
+                                <i class="fas fa-chart-bar"></i> Graphique
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="table-responsive" id="rankingTableContainer">
+                            <table class="table" id="rankingTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Participant</th>
+                                        <th>Niveau</th>
+                                        <th>Points</th>
+                                        <th>Challenges</th>
+                                        <th>Taux de réussite</th>
+                                        <th>Évolution</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rankingTableBody">
+                                    <!-- Généré par JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Graphique (caché par défaut) -->
+                        <div class="chart-container" id="rankingChartContainer" style="display: none;">
+                            <div class="chart-wrapper">
+                                <canvas id="rankingChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Graphique évolution -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Évolution des Points</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-wrapper">
+                            <canvas id="pointsEvolutionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Statistiques par catégorie -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Répartition par Catégorie</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-wrapper">
+                            <canvas id="categoryDistributionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Meilleurs scores -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-fire"></i> Meilleurs Scores</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="best-scores" id="bestScores">
+                            <!-- Généré par JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Classement mensuel -->
+          
+    <script src="js/main.js"></script>
+    <script src="js/rankings.js"></script>
+</body>
+</html>

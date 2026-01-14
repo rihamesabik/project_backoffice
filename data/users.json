@@ -1,0 +1,181 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Amina El Amrani",
+      "email": "amina.elamrani@email.com",
+      "level": "expert",
+      "points": 2458,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Développeuse full-stack basée à Casablanca, passionnée par les algorithmes avancés et l’optimisation du code.",
+      "joinDate": "2023-01-15",
+      "lastActive": "2024-03-15",
+      "totalChallenges": 42,
+      "completedChallenges": 38,
+      "successRate": 92,
+      "submissions": [
+        { "challenge": "Tri rapide", "score": 100, "date": "2024-03-14", "status": "accepté" },
+        { "challenge": "Arbre binaire", "score": 95, "date": "2024-03-13", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "Premier challenge", "icon": "fas fa-star", "date": "2023-01-20" },
+        { "name": "Expert en algorithmes", "icon": "fas fa-brain", "date": "2023-06-10" }
+      ]
+    },
+
+    {
+      "id": 2,
+      "name": "Youssef Benali",
+      "email": "youssef.benali@email.com",
+      "level": "avancé",
+      "points": 2318,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Étudiant en informatique à Rabat, spécialisé en intelligence artificielle.",
+      "joinDate": "2023-02-10",
+      "lastActive": "2024-03-14",
+      "totalChallenges": 38,
+      "completedChallenges": 35,
+      "successRate": 89,
+      "submissions": [
+        { "challenge": "Hash Table", "score": 85, "date": "2024-03-11", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "1000 points", "icon": "fas fa-trophy", "date": "2023-04-20" }
+      ]
+    },
+
+    {
+      "id": 3,
+      "name": "Sara Bouchtaoui",
+      "email": "sara.bouchtaoui@email.com",
+      "level": "avancé",
+      "points": 2185,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Développeuse backend à Fès, passionnée par les structures de données complexes.",
+      "joinDate": "2023-03-05",
+      "lastActive": "2024-03-13",
+      "totalChallenges": 35,
+      "completedChallenges": 32,
+      "successRate": 91,
+      "submissions": [
+        { "challenge": "Arbre binaire", "score": 92, "date": "2024-03-11", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "2000 points", "icon": "fas fa-trophy", "date": "2023-09-15" }
+      ]
+    },
+
+    {
+      "id": 4,
+      "name": "Hamza El Idrissi",
+      "email": "hamza.elidrissi@email.com",
+      "level": "intermédiaire",
+      "points": 1958,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Développeur web à Meknès en reconversion vers la programmation compétitive.",
+      "joinDate": "2023-04-20",
+      "lastActive": "2024-03-12",
+      "totalChallenges": 30,
+      "completedChallenges": 27,
+      "successRate": 85,
+      "submissions": [
+        { "challenge": "Tri rapide", "score": 88, "date": "2024-03-11", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "1000 points", "icon": "fas fa-trophy", "date": "2023-10-10" }
+      ]
+    },
+
+    {
+      "id": 5,
+      "name": "Khadija Ait Lahcen",
+      "email": "khadija.aitlahcen@email.com",
+      "level": "intermédiaire",
+      "points": 1898,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Étudiante en génie logiciel à Agadir, participante active aux hackathons.",
+      "joinDate": "2023-05-15",
+      "lastActive": "2024-03-11",
+      "totalChallenges": 28,
+      "completedChallenges": 25,
+      "successRate": 83,
+      "submissions": [
+        { "challenge": "Tri rapide", "score": 86, "date": "2024-03-10", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "Premier challenge", "icon": "fas fa-star", "date": "2023-05-20" }
+      ]
+    },
+
+    {
+      "id": 6,
+      "name": "Anas Ouazzani",
+      "email": "anas.ouazzani@email.com",
+      "level": "débutant",
+      "points": 1250,
+      "role": "participant",
+      "status": "actif",
+      "bio": "Débutant en programmation compétitive à Oujda, apprend les bases algorithmiques.",
+      "joinDate": "2023-06-10",
+      "lastActive": "2024-03-10",
+      "totalChallenges": 20,
+      "completedChallenges": 17,
+      "successRate": 75,
+      "submissions": [
+        { "challenge": "Tri rapide", "score": 75, "date": "2024-03-09", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "Premier challenge", "icon": "fas fa-star", "date": "2023-06-15" }
+      ]
+    },
+
+    {
+      "id": 7,
+      "name": "Imane Ziani",
+      "email": "imane.ziani@email.com",
+      "level": "expert",
+      "points": 2750,
+      "role": "admin",
+      "status": "actif",
+      "bio": "Administratrice de la plateforme CodingHub, experte en programmation compétitive.",
+      "joinDate": "2023-01-01",
+      "lastActive": "2024-03-15",
+      "totalChallenges": 50,
+      "completedChallenges": 48,
+      "successRate": 96,
+      "submissions": [
+        { "challenge": "Dijkstra", "score": 100, "date": "2024-03-14", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "Maître de la plateforme", "icon": "fas fa-crown", "date": "2023-07-01" }
+      ]
+    },
+
+    {
+      "id": 8,
+      "name": "Rachid El Fassi",
+      "email": "rachid.elfassi@email.com",
+      "level": "avancé",
+      "points": 2100,
+      "role": "participant",
+      "status": "inactif",
+      "bio": "Développeur freelance à Tanger, actif par périodes.",
+      "joinDate": "2023-02-20",
+      "lastActive": "2024-01-15",
+      "totalChallenges": 32,
+      "completedChallenges": 29,
+      "successRate": 87,
+      "submissions": [
+        { "challenge": "Hash Table", "score": 94, "date": "2024-01-14", "status": "accepté" }
+      ],
+      "achievements": [
+        { "name": "1000 points", "icon": "fas fa-trophy", "date": "2023-06-15" }
+      ]
+    }
+  ]
+}

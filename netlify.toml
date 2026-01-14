@@ -1,0 +1,17 @@
+# netlify.toml
+[build]
+  publish = "."  # Dossier à publier (racine)
+  command = ""   # Pas de commande de build
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Configuration des headers pour le cache
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "public, max-age=3600"

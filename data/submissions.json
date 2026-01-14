@@ -1,0 +1,196 @@
+{
+  "submissions": [
+    {
+      "id": 1001,
+      "userId": 1,
+      "userName": "Amina El Amrani",
+      "challengeId": 101,
+      "challengeName": "QuickSort Opt",
+      "challengeCategory": "Algorithmes",
+      "code": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nusing namespace std;\n\n// Version optimisée pour les doublons\nvoid optimizedSort(vector<int>& arr) {\n    if (arr.empty()) return;\n\n    // Utilisation d'un tri à 3 voies (3-way partition)\n    int lt = 0, gt = arr.size() - 1;\n    int i = 0;\n    int pivot = arr[0];\n\n    while (i <= gt) {\n        if (arr[i] < pivot) {\n            swap(arr[lt++], arr[i++]);\n        } else if (arr[i] > pivot) {\n            swap(arr[i], arr[gt--]);\n        } else {\n            i++;\n        }\n    }\n    // Tri récursif des partitions\n    vector<int> left(arr.begin(), arr.begin() + lt);\n    vector<int> right(arr.begin() + gt + 1, arr.end());\n    optimizedSort(left);\n    optimizedSort(right);\n}\n\n// Fonction de test\nvoid testQuickSort() {\n    vector<int> arr = {3, 6, 8, 10, 1, 2, 1};\n    cout << \"Original array: \";\n    for (int num : arr) cout << num << \" \";\n    cout << endl;\n    \n    optimizedSort(arr);\n    \n    cout << \"Sorted array: \";\n    for (int num : arr) cout << num << \" \";\n    cout << endl;\n}",
+      "language": "C++",
+      "score": 980,
+      "maxScore": 1000,
+      "status": "accepté",
+      "date": "2024-05-12 14:30:00",
+      "executionTime": 245,
+      "memoryUsage": 156,
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(log n)",
+      "testResults": [
+        {
+          "testId": 1,
+          "name": "Test de base",
+          "status": "réussi",
+          "executionTime": 45,
+          "memory": 120,
+          "input": "[3, 6, 8, 10, 1, 2, 1]",
+          "expected": "[1, 1, 2, 3, 6, 8, 10]",
+          "actual": "[1, 1, 2, 3, 6, 8, 10]"
+        },
+        {
+          "testId": 2,
+          "name": "Test avec doublons",
+          "status": "réussi",
+          "executionTime": 67,
+          "memory": 135,
+          "input": "[5, 5, 5, 5, 5]",
+          "expected": "[5, 5, 5, 5, 5]",
+          "actual": "[5, 5, 5, 5, 5]"
+        },
+        {
+          "testId": 3,
+          "name": "Test tableau vide",
+          "status": "réussi",
+          "executionTime": 12,
+          "memory": 80,
+          "input": "[]",
+          "expected": "[]",
+          "actual": "[]"
+        },
+        {
+          "testId": 4,
+          "name": "Test grandes données",
+          "status": "réussi",
+          "executionTime": 121,
+          "memory": 156,
+          "input": "[10000 éléments aléatoires]",
+          "expected": "[trié]",
+          "actual": "[trié]"
+        }
+      ],
+      "qualityMetrics": {
+        "cyclomaticComplexity": 8,
+        "linesOfCode": 35,
+        "codeDuplication": 0,
+        "codeStyleScore": 95,
+        "commentsRatio": 25
+      },
+      "reviewerComments": "Excellente implémentation du tri à 3 voies. Le code est propre, bien commenté et gère efficacement les cas avec doublons."
+    },
+    {
+      "id": 1002,
+      "userId": 2,
+      "userName": "Youssef Benali",
+      "challengeId": 102,
+      "challengeName": "Arbre binaire",
+      "challengeCategory": "Structures de données",
+      "code": "class BinaryTree {\n    class Node {\n        int value;\n        Node left, right;\n        \n        Node(int value) {\n            this.value = value;\n            left = right = null;\n        }\n    }\n    \n    private Node root;\n    \n    public void insert(int value) {\n        root = insertRec(root, value);\n    }\n    \n    private Node insertRec(Node root, int value) {\n        if (root == null) {\n            root = new Node(value);\n            return root;\n        }\n        \n        if (value < root.value) {\n            root.left = insertRec(root.left, value);\n        } else if (value > root.value) {\n            root.right = insertRec(root.right, value);\n        }\n        \n        return root;\n    }\n    \n    public void inorder() {\n        inorderRec(root);\n    }\n    \n    private void inorderRec(Node root) {\n        if (root != null) {\n            inorderRec(root.left);\n            System.out.print(root.value + \" \");\n            inorderRec(root.right);\n        }\n    }\n}",
+      "language": "Java",
+      "score": 920,
+      "maxScore": 1000,
+      "status": "accepté",
+      "date": "2024-05-11 09:15:00",
+      "executionTime": 189,
+      "memoryUsage": 210,
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(n)",
+      "testResults": [
+        {
+          "testId": 1,
+          "name": "Insertion simple",
+          "status": "réussi",
+          "executionTime": 34,
+          "memory": 145,
+          "input": "[5, 3, 7, 2, 4]",
+          "expected": "[2, 3, 4, 5, 7]",
+          "actual": "[2, 3, 4, 5, 7]"
+        }
+      ],
+      "qualityMetrics": {
+        "cyclomaticComplexity": 6,
+        "linesOfCode": 45,
+        "codeDuplication": 0,
+        "codeStyleScore": 90,
+        "commentsRatio": 15
+      },
+      "reviewerComments": "Bonne implémentation de base. Pensez à gérer les cas d'égalité."
+    },
+    {
+      "id": 1003,
+      "userId": 3,
+      "userName": "Sara Bouchtaoui",
+      "challengeId": 103,
+      "challengeName": "Hash Table",
+      "challengeCategory": "Structures de données",
+      "code": "class HashTable:\n    def __init__(self, size=10):\n        self.size = size\n        self.table = [[] for _ in range(size)]\n    \n    def _hash(self, key):\n        return key % self.size\n    \n    def insert(self, key, value):\n        hash_key = self._hash(key)\n        bucket = self.table[hash_key]\n        \n        for i, (k, v) in enumerate(bucket):\n            if k == key:\n                bucket[i] = (key, value)\n                return\n        \n        bucket.append((key, value))\n    \n    def get(self, key):\n        hash_key = self._hash(key)\n        bucket = self.table[hash_key]\n        \n        for k, v in bucket:\n            if k == key:\n                return v\n        \n        raise KeyError(f\"Key {key} not found\")\n    \n    def remove(self, key):\n        hash_key = self._hash(key)\n        bucket = self.table[hash_key]\n        \n        for i, (k, v) in enumerate(bucket):\n            if k == key:\n                del bucket[i]\n                return\n        \n        raise KeyError(f\"Key {key} not found\")",
+      "language": "Python",
+      "score": 880,
+      "maxScore": 1000,
+      "status": "rejeté",
+      "date": "2024-05-10 16:45:00",
+      "executionTime": 315,
+      "memoryUsage": 280,
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(n)",
+      "testResults": [
+        {
+          "testId": 1,
+          "name": "Insertion simple",
+          "status": "réussi",
+          "executionTime": 56,
+          "memory": 180,
+          "input": "insert(5, 'test')",
+          "expected": "get(5) = 'test'",
+          "actual": "get(5) = 'test'"
+        },
+        {
+          "testId": 2,
+          "name": "Gestion collisions",
+          "status": "échoué",
+          "executionTime": 89,
+          "memory": 195,
+          "input": "insert(15, 'collision')",
+          "expected": "get(15) = 'collision'",
+          "actual": "KeyError"
+        }
+      ],
+      "qualityMetrics": {
+        "cyclomaticComplexity": 10,
+        "linesOfCode": 38,
+        "codeDuplication": 5,
+        "codeStyleScore": 85,
+        "commentsRatio": 10
+      },
+      "reviewerComments": "Problème de gestion des collisions. L'algorithme de hachage doit être amélioré."
+    },
+    {
+      "id": 1004,
+      "userId": 4,
+      "userName": "Hamza El Idrissi",
+      "challengeId": 104,
+      "challengeName": "Dijkstra",
+      "challengeCategory": "Algorithmes",
+      "code": "function dijkstra(graph, start) {\n    const distances = {};\n    const visited = {};\n    const pq = new PriorityQueue();\n    \n    // Initialisation\n    for (let vertex in graph) {\n        distances[vertex] = Infinity;\n        visited[vertex] = false;\n    }\n    distances[start] = 0;\n    pq.enqueue(start, 0);\n    \n    while (!pq.isEmpty()) {\n        const current = pq.dequeue().element;\n        \n        if (visited[current]) continue;\n        visited[current] = true;\n        \n        for (let neighbor in graph[current]) {\n            const distance = distances[current] + graph[current][neighbor];\n            \n            if (distance < distances[neighbor]) {\n                distances[neighbor] = distance;\n                pq.enqueue(neighbor, distance);\n            }\n        }\n    }\n    \n    return distances;\n}",
+      "language": "JavaScript",
+      "score": 750,
+      "maxScore": 1000,
+      "status": "en attente",
+      "date": "2024-05-09 11:20:00",
+      "executionTime": 420,
+      "memoryUsage": 325,
+      "timeComplexity": "O((V+E) log V)",
+      "spaceComplexity": "O(V)",
+      "testResults": [
+        {
+          "testId": 1,
+          "name": "Graphe simple",
+          "status": "en cours",
+          "executionTime": 0,
+          "memory": 0,
+          "input": "graphe 3 nœuds",
+          "expected": "[0, 2, 4]",
+          "actual": "Non exécuté"
+        }
+      ],
+      "qualityMetrics": {
+        "cyclomaticComplexity": 7,
+        "linesOfCode": 30,
+        "codeDuplication": 0,
+        "codeStyleScore": 80,
+        "commentsRatio": 20
+      },
+      "reviewerComments": "En attente de revue manuelle."
+    }
+  ]
+}

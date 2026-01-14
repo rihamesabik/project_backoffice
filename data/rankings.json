@@ -1,0 +1,102 @@
+[
+  {
+    "rank": 1,
+    "user_id": 1,
+    "username": "oumnia.amalal12",
+    "full_name": "Oumnia Amalal",
+    "points": 2458,
+    "challenges_completed": 24,
+    "success_rate": 92,
+    "rank_change": 0
+  },
+  {
+    "rank": 2,
+    "user_id": 2,
+    "username": "rihame.sabik05",
+    "full_name": "Rihame Sabik",
+    "points": 2318,
+    "challenges_completed": 23,
+    "success_rate": 85,
+    "rank_change": 1
+  },
+  {
+    "rank": 3,
+    "user_id": 3,
+    "username": "wadii01.rassy",
+    "full_name": "Wadii Rassy",
+    "points": 2185,
+    "challenges_completed": 21,
+    "success_rate": 88,
+    "rank_change": -1
+  },
+  {
+    "rank": 4,
+    "user_id": 4,
+    "username": "romaysae.mk",
+    "full_name": "Romaysae Moumkine",
+    "points": 1958,
+    "challenges_completed": 19,
+    "success_rate": 79,
+    "rank_change": 0
+  },
+  {
+    "rank": 5,
+    "user_id": 5,
+    "username": "lina.sb",
+    "full_name": "Lina Sabik",
+    "points": 1898,
+    "challenges_completed": 18,
+    "success_rate": 76,
+    "rank_change": 2
+  },
+  {
+    "rank": 6,
+    "user_id": 6,
+    "username": "zakaria.zak",
+    "full_name": "Zakaria Lefèvre",
+    "points": 1842,
+    "challenges_completed": 17,
+    "success_rate": 82,
+    "rank_change": -1
+  },
+  {
+    "rank": 7,
+    "user_id": 7,
+    "username": "marie.curie",
+    "full_name": "Marie Curie",
+    "points": 1756,
+    "challenges_completed": 16,
+    "success_rate": 74,
+    "rank_change": 0
+  },
+  {
+    "rank": 8,
+    "user_id": 8,
+    "username": "pierre.durand",
+    "full_name": "Pierre Durand",
+    "points": 1689,
+    "challenges_completed": 15,
+    "success_rate": 80,
+    "rank_change": 1
+  },
+  {
+    "rank": 9,
+    "user_id": 9,
+    "username": "clara.morel",
+    "full_name": "Clara Morel",
+    "points": 1598,
+    "challenges_completed": 14,
+    "success_rate": 78,
+    "rank_change": 3
+  },
+  {
+    "rank": 10,
+    "user_id": 10,
+    "username": "antoine.leroy",
+    "full_name": "Antoine Leroy",
+    "points": 1542,
+    "challenges_completed": 13,
+    "success_rate": 75,
+    "rank_change": -2
+  }
+]

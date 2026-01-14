@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingHub - Détails Participant</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            <h1>CodingHub</h1>
+        </div>
+        
+        <ul class="menu" id="main-menu">
+            <li data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+            </li>
+            <li data-page="challenges">
+                <i class="fas fa-tasks"></i>
+                <span>Challenges</span>
+            </li>
+            <li class="active" data-page="users">
+                <i class="fas fa-users"></i>
+                <span>Participants</span>
+            </li>
+            <li data-page="submissions">
+                <i class="fas fa-paper-plane"></i>
+                <span>Soumissions</span>
+            </li>
+            <li data-page="categories">
+                <i class="fas fa-folder"></i>
+                <span>Catégories</span>
+            </li>
+            <li data-page="rankings">
+                <i class="fas fa-trophy"></i>
+                <span>Classement</span>
+            </li>
+            <li data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Paramètres</span>
+            </li>
+        </ul>
+        
+        <div class="user-profile">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+                <h3>Jane Doe</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+            
+                <h2 class="page-title">
+                    <i class="fas fa-user-circle"></i> Détails du Participant
+                </h2>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="navbar-controls">
+                    <button class="btn btn-secondary" onclick="window.history.back()">
+                        <i class="fas fa-arrow-left"></i> Retour
+                    </button>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Content -->
+        <div class="page-content" id="userDetailsContent">
+            <!-- Les détails seront chargés par JavaScript -->
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Chargement des détails du participant...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/user-details.js"></script>
+</body>
+</html>

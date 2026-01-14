@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Algorithmes",
+    "description": "Problèmes algorithmiques classiques et avancés",
+    "challenge_count": 12,
+    "color": "#4dabf7"
+  },
+  {
+    "id": 2,
+    "name": "Structures de données",
+    "description": "Implémentation et manipulation de structures de données",
+    "challenge_count": 8,
+    "color": "#40c057"
+  },
+  {
+    "id": 3,
+    "name": "Développement Web",
+    "description": "Challenges frontend et backend pour le web",
+    "challenge_count": 10,
+    "color": "#ff922b"
+  },
+  {
+    "id": 4,
+    "name": "Bases de données",
+    "description": "Requêtes SQL et conception de bases de données",
+    "challenge_count": 6,
+    "color": "#f06595"
+  },
+  {
+    "id": 5,
+    "name": "Sécurité",
+    "description": "Tests de sécurité et bonnes pratiques",
+    "challenge_count": 5,
+    "color": "#7950f2"
+  },
+  {
+    "id": 6,
+    "name": "Intelligence Artificielle",
+    "description": "Machine Learning et algorithmes d'IA",
+    "challenge_count": 7,
+    "color": "#20c997"
+  }
+]

@@ -1,0 +1,43 @@
+.settings-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.settings-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.settings-card h2 {
+    margin-bottom: 15px;
+}
+
+.setting-row,
+.checkbox-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+}
+
+input, select {
+    padding: 6px 10px;
+}
+
+.save-btn {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

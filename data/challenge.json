@@ -1,0 +1,100 @@
+{
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Inverser une chaîne de caractères",
+      "description": "Écrire une fonction qui prend une chaîne de caractères en entrée et retourne cette chaîne inversée.",
+      "category": "Algorithmes",
+      "difficulty": "Facile",
+      "points": 10,
+      "status": "Actif",
+      "created_at": "2024-01-15",
+      "submissions": 245,
+      "success_rate": 85
+    },
+    {
+      "id": 2,
+      "title": "Trouver le plus grand élément dans un tableau",
+      "description": "Implémenter une fonction qui retourne le plus grand nombre dans un tableau d'entiers.",
+      "category": "Algorithmes",
+      "difficulty": "Facile",
+      "points": 15,
+      "status": "Actif",
+      "created_at": "2024-01-20",
+      "submissions": 198,
+      "success_rate": 78
+    },
+    {
+      "id": 3,
+      "title": "Validation de mot de passe",
+      "description": "Créer une fonction qui valide si un mot de passe répond aux critères de sécurité.",
+      "category": "Sécurité",
+      "difficulty": "Moyen",
+      "points": 25,
+      "status": "Actif",
+      "created_at": "2024-02-05",
+      "submissions": 156,
+      "success_rate": 65
+    },
+    {
+      "id": 4,
+      "title": "Calculatrice RPN",
+      "description": "Implémenter une calculatrice utilisant la notation polonaise inverse.",
+      "category": "Structures",
+      "difficulty": "Difficile",
+      "points": 50,
+      "status": "Actif",
+      "created_at": "2024-02-15",
+      "submissions": 89,
+      "success_rate": 42
+    },
+    {
+      "id": 5,
+      "title": "ToDo List en React",
+      "description": "Créer une application ToDo List complète avec React et localStorage.",
+      "category": "Web Dev",
+      "difficulty": "Moyen",
+      "points": 30,
+      "status": "Actif",
+      "created_at": "2024-03-01",
+      "submissions": 120,
+      "success_rate": 70
+    },
+    {
+      "id": 6,
+      "title": "API REST avec Node.js",
+      "description": "Développer une API REST complète pour un système de gestion d'utilisateurs.",
+      "category": "Backend",
+      "difficulty": "Difficile",
+      "points": 45,
+      "status": "Actif",
+      "created_at": "2024-03-10",
+      "submissions": 95,
+      "success_rate": 55
+    },
+    {
+      "id": 7,
+      "title": "Pagination en JavaScript",
+      "description": "Créer un système de pagination pour une liste d'éléments.",
+      "category": "Web Dev",
+      "difficulty": "Facile",
+      "points": 20,
+      "status": "Inactif",
+      "created_at": "2024-02-28",
+      "submissions": 110,
+      "success_rate": 80
+    },
+    {
+      "id": 8,
+      "title": "Arbre binaire de recherche",
+      "description": "Implémenter un arbre binaire de recherche avec insertion, suppression et recherche.",
+      "category": "Structures",
+      "difficulty": "Difficile",
+      "points": 40,
+      "status": "Actif",
+      "created_at": "2024-03-05",
+      "submissions": 75,
+      "success_rate": 48
+    }
+  ]
+}

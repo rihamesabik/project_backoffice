@@ -1,0 +1,14 @@
+{
+  "admin": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "fullName": "Administrateur CodingHub",
+      "email": "admin@codinghub.ma",
+      "role": "admin",
+      "status": "actif",
+      "lastLogin": "2024-03-15"
+    }
+  ]
+}
